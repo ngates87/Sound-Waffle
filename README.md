@@ -19,6 +19,8 @@ Technologies Used:
 - NodeJs
 - Electron
 - Typescript - code
+- knockoutjs
+- boostrap
 - gulp - build
 
 **GOALS**
@@ -30,7 +32,8 @@ Technologies Used:
 
 Current Features:
 - Play n - number of cues at the same time
-- set fade time 0-20.0 secs
+- per cue fade time, 0-20.0 secs
+- per cue relative volume level
 - Cues can be
     - single song 
     - or playlist (so you never have to leave the app)
@@ -40,15 +43,16 @@ Future Features (goals):
 - Remote triggering
    - either wired or wireless
        - tried amazon dash, too slow
+   - - Dmx/Midi support?
 - Import/Export
     - Collate audio files, and zip up, adjust file paths as needed
         - make it easy to create show on one computer, and easy import on a another.
 - Easing Functions
     - currently using jquery, could easly import jquery-ui to add different easing options
 - Improve shuffle (start in shuffle mode)
+- Skip Ahead (10,20,30 secs?)
+- Next Track
 - Unit Testing...
     - the least fun, but probably good idea part. 
-- Dmx/Midi support?
 - Other?
 
-- 
