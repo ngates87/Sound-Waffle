@@ -22,7 +22,7 @@ abstract class BaseCueViewModel {
     protected state: KnockoutObservable<CurrentState> = ko.observable(CurrentState.Stopped);
     protected loop = ko.observable<boolean>(false);
     protected volume = ko.observable<number>(100);
-    protected displayName = ko.observable<string
+    protected displayName = ko.observable<string>("");
     protected fileName = ko.observable<string>("");
     protected icon = ko.observable<string>("fa-play");
     protected fadeTime = ko.observable<number>(1);
@@ -243,7 +243,7 @@ class PlaylistCueViewModel extends BaseCueViewModel {
         this.playAt(this.currentIndex);
     }
 
-    save(cue: PlayListCue) {
+    save(cue: IPlayListCue) {
         cue.fileName = [];
 
         this.files().forEach((file) => {

@@ -111,9 +111,9 @@ class AppViewModel {
                     this.currentShow.Cues.forEach((cue) => {
 
                         if (typeof cue.fileName === 'string') {
-                            cvm = new CueViewModel(<string>cue.fileName,cue.loop,cue.volume);
+                            cvm = new CueViewModel(<string>cue.fileName, cue.loop, cue.volume);
                         } else if (typeof cue.fileName === 'object') {
-                            cvm = new PlaylistCueViewModel(<string[]>cue.fileName,cue.loop,cue.volume);
+                            cvm = new PlaylistCueViewModel(<string[]>cue.fileName, cue.loop, (<IPlayListCue>cue).shuffle, cue.volume);
                         }
 
                         //cvm.load(cue);
