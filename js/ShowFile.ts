@@ -5,7 +5,7 @@ interface ICue {
     fadeTime: number;
 }
 
-interface PlayListCue extends ICue {
+interface IPlayListCue extends ICue {
     shuffle: boolean;
 }
 

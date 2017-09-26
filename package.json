@@ -4,7 +4,6 @@
   "description": "",
   "main": "main.js",
   "dependencies": {
-    "electron": "^0.4.1",
     "gulp": "^3.9.1",
     "jquery": "^2.2.3",
     "knockout": "^3.4.0",
@@ -19,9 +18,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "electron": "1.7.8",
     "electron-prebuilt": "^0.37.7",
     "gulp": "^3.9.1",
-    "gulp-typescript": "^2.13.0"
+    "gulp-typescript": "^2.13.0",
+    "remote": "^0.2.6"
   },
   "build": {
     "app-bundle-id": "your.id",

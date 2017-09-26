@@ -5,9 +5,13 @@
 /// <reference path="./../typings/Knockout/knockout.d.ts" />
 /// <reference path="CueViewModel.ts" /> 
 
-var remote = require('remote');
+const {remote} = require('electron');
+const { dialog } = remote.require('electron');
 var fs = require('fs');
-var dlg: Electron.Dialog = remote.require('dialog');
+
+/*console.log(dialog);
+const electron = require('electron');
+console.log(electron)*/
 
 class AppViewModel {
     private $ = require('jquery');
@@ -28,7 +32,7 @@ class AppViewModel {
 
     addCue(): void {
 
-        dlg.showOpenDialog({
+        dialog.showOpenDialog({
             properties: ['openFile', 'multiSelections'],
             filters: [{ name: 'Audio Files', extensions: ['mp3', 'm4a', 'wav', 'ogg'] }]
         }, (fileName) => {
@@ -45,7 +49,7 @@ class AppViewModel {
 
     addPlaylistCue(): void {
 
-        dlg.showOpenDialog({
+        dialog.showOpenDialog({
             properties: ['openFile', 'multiSelections'],
             filters: [{ name: 'Audio Files', extensions: ['mp3', 'm4a', 'wav', 'ogg'] }]
         }, (files) => {
@@ -73,7 +77,7 @@ class AppViewModel {
         });
 
         if (!this.loadedFilePath) {
-            dlg.showSaveDialog({
+            dialog.showSaveDialog({
                 title: "Save Show",
                 filters: [{ name: 'show File', extensions: ['sc'] }]
             }, (filePath: string) => {
@@ -93,7 +97,7 @@ class AppViewModel {
     load() {
         console.log("load");
 
-        dlg.showOpenDialog({
+        dialog.showOpenDialog({
             title: "Save Show",
             filters: [{ name: 'show File', extensions: ['sc'] }]
         }, (filePath: string[]) => {
