@@ -1,9 +1,6 @@
 var remote = require('electron').remote;
 var dialog = remote.require('electron').dialog;
 var fs = require('fs');
-console.log(dialog);
-var electron = require('electron');
-console.log(electron);
 var AppViewModel = (function () {
     function AppViewModel() {
         this.$ = require('jquery');
