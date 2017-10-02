@@ -27,6 +27,7 @@ var BaseCueViewModel = (function () {
         this.icon = ko.observable("fa-play");
         this.fadeTime = ko.observable(1);
         this.progress = ko.observable(0);
+        this.progressNormalize = ko.observable(0);
         this.src = ko.observable("");
         this.IsPlaying = ko.computed(function () {
             return _this.state() === CurrentState.Playing;
@@ -56,6 +57,7 @@ var BaseCueViewModel = (function () {
         this.fadeTime(fadeTime);
         this.player.ontimeupdate = function (ev) {
             _this.progress(_this.player.currentTime / _this.player.duration);
+            _this.progressNormalize(Math.floor(_this.progress() * 100));
         };
         this.src.subscribe(function (val) {
             _this.player.src = val;

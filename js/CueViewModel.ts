@@ -18,15 +18,17 @@ enum CurrentState {
 // should consider making CueVM and PlaylistCueVM one and the same? Isn't a single cue,just a playlist with one song?
 abstract class BaseCueViewModel {
 
+    protected playIcon = "fa-play";
     protected player: HTMLAudioElement = new Audio();
     protected state: KnockoutObservable<CurrentState> = ko.observable(CurrentState.Stopped);
     protected loop = ko.observable<boolean>(false);
     protected volume = ko.observable<number>(100);
     protected displayName = ko.observable<string>("");
     protected fileName = ko.observable<string>("");
-    protected icon = ko.observable<string>("fa-play");
+    protected icon = ko.observable<string>(this.playIcon);
     protected fadeTime = ko.observable<number>(1);
     protected progress = ko.observable<number>(0);
+    protected progressNormalize = ko.observable(0)
     protected src = ko.observable<string>("");
 
     constructor(loop: boolean = false, volume: number = 100, fadeTime: number = 1.0) {
@@ -46,7 +48,7 @@ abstract class BaseCueViewModel {
                 this.icon("fa-pause");
             }
             else if (newValue === CurrentState.Paused || newValue === CurrentState.Stopped) {
-                this.icon("fa-play");
+                this.icon(this.playIcon);
             }
             else {
                 //this.icon("fa-stop");
@@ -63,6 +65,7 @@ abstract class BaseCueViewModel {
 
         this.player.ontimeupdate = (ev: Event) => {
             this.progress(this.player.currentTime / this.player.duration);
+            this.progressNormalize(Math.floor(this.progress() * 100));
         };
 
         this.src.subscribe((val) => {
