@@ -40,20 +40,20 @@
                         <span class="fa fa-3x" data-bind="css:icon" style="padding:35%;"></span>
                     </div>
                     <div style="display:inline-block;">
-                        <div>F:
+                        <div title="fade time">F:
                             <span data-bind="text:fadeTime"></span>
                         </div>
-                        <div>V:
+                        <div title="volume">V:
                             <span data-bind="text:volume"></span>
                         </div>
                     </div>
 
                 </div>
-                <div style=" position:absolute; bottom:15px;">
-                    <!-- ko if: files !== undefined -->
+                <div style=" position:absolute; bottom:15px; width:100%;">
+                    <!-- ko if: $data.files !== undefined -->
                         <div class="fa fa-list-ul" style="display:inline-block" title="this is a playlist cue"></div>
                     <!-- /ko -->
-                    <span data-bind="text:displayName"></span>
+                    <div style="width:82%; display:inline-block;" data-bind="text:displayName"></div>
                     
                 </div>
                 <div class="progress" style="height:5px; width:95%; position:absolute; bottom:5px; margin-bottom:0;">
