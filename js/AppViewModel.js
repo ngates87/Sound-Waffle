@@ -79,10 +79,10 @@ var AppViewModel = (function () {
                     var cvm = null;
                     _this.currentShow.Cues.forEach(function (cue) {
                         if (typeof cue.fileName === 'string') {
-                            cvm = new CueViewModel(cue.fileName, cue.loop, cue.volume);
+                            cvm = new CueViewModel(cue.fileName, cue.loop, cue.volume, cue.fadeTime);
                         }
                         else if (typeof cue.fileName === 'object') {
-                            cvm = new PlaylistCueViewModel(cue.fileName, cue.loop, cue.shuffle, cue.volume);
+                            cvm = new PlaylistCueViewModel(cue.fileName, cue.loop, cue.shuffle, cue.volume, cue.fadeTime);
                         }
                         _this.SoundCues.push(cvm);
                     });
