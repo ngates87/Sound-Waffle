@@ -63,7 +63,9 @@ var BaseCueViewModel = (function () {
             _this.player.src = val;
         });
     }
-    BaseCueViewModel.prototype.onEnd = function () { };
+    BaseCueViewModel.prototype.onEnd = function () {
+        this.state(CurrentState.Stopped);
+    };
     BaseCueViewModel.prototype.setLoop = function (newVal) { };
     BaseCueViewModel.prototype.fade = function () {
         this.fadeOut(this.fadeTime() * 1000);
