@@ -18,13 +18,14 @@ var BaseCueViewModel = (function () {
         if (loop === void 0) { loop = false; }
         if (volume === void 0) { volume = 100; }
         if (fadeTime === void 0) { fadeTime = 1.0; }
+        this.playIcon = "fa-play";
         this.player = new Audio();
         this.state = ko.observable(CurrentState.Stopped);
         this.loop = ko.observable(false);
         this.volume = ko.observable(100);
         this.displayName = ko.observable("");
         this.fileName = ko.observable("");
-        this.icon = ko.observable("fa-play");
+        this.icon = ko.observable(this.playIcon);
         this.fadeTime = ko.observable(1);
         this.progress = ko.observable(0);
         this.progressNormalize = ko.observable(0);
@@ -44,7 +45,7 @@ var BaseCueViewModel = (function () {
                 _this.icon("fa-pause");
             }
             else if (newValue === CurrentState.Paused || newValue === CurrentState.Stopped) {
-                _this.icon("fa-play");
+                _this.icon(_this.playIcon);
             }
             else {
             }
@@ -57,7 +58,7 @@ var BaseCueViewModel = (function () {
         this.fadeTime(fadeTime);
         this.player.ontimeupdate = function (ev) {
             _this.progress(_this.player.currentTime / _this.player.duration);
-            _this.progressNormalize(Math.floor(_this.progress() * 100));
+            _this.progressNormalize(_this.progress() * 100);
         };
         this.src.subscribe(function (val) {
             _this.player.src = val;

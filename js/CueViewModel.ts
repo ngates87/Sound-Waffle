@@ -65,11 +65,8 @@ abstract class BaseCueViewModel {
 
         this.player.ontimeupdate = (ev: Event) => {
             this.progress(this.player.currentTime / this.player.duration);
-<<<<<<< HEAD
-            this.progressNormalize(Math.floor(this.progress() * 100));
-=======
+            this.progressNormalize(this.progress() * 100);
 			
->>>>>>> 01c86f0c199ac4bf2d053c4fab36ac95ed8ecbf7
         };
 
         this.src.subscribe((val) => {
