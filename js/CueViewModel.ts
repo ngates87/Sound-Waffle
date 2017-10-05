@@ -65,12 +65,17 @@ abstract class BaseCueViewModel {
 
         this.player.ontimeupdate = (ev: Event) => {
             this.progress(this.player.currentTime / this.player.duration);
+<<<<<<< HEAD
             this.progressNormalize(Math.floor(this.progress() * 100));
+=======
+			
+>>>>>>> 01c86f0c199ac4bf2d053c4fab36ac95ed8ecbf7
         };
 
         this.src.subscribe((val) => {
             this.player.src = val;
         });
+
 
     }
 
@@ -78,7 +83,9 @@ abstract class BaseCueViewModel {
         return this.state() === CurrentState.Playing;
     });
 
-    onEnd(): void { }
+    onEnd(): void { 
+		this.state(CurrentState.Stopped);
+	}
 
     setLoop(newVal: boolean) { }
 
