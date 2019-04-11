@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sound Waffle</title>
+    <link rel="icon" type="image/png" href="soundWaffle.png">
+    <link rel="stylesheet" href="bower_components/metro-bootstrap/dist/css/metro-bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="./css/styles.css">
+
+</head>
+
+<body>
+    <div class="container-fluid" style="margin-top:10px;">
+        <div class="row">
+            <div class="col-xs-12">
+                <button data-bind="click:addCue" class="btn btn-primary">Add Cue</button>
+                <button data-bind="click:addPlaylistCue" class="btn btn-primary">Add Playlist</button>
+                <button data-bind="click:save" class="btn btn-primary">Save</button>
+                <button data-bind="click:load" class="btn btn-primary">Load</button>
+                <button type="button" class="btn btn-primary fa fa-stop fa-2" title="Stop All" data-bind="click:stopAll"></button>
+            </div>
+        </div>
+        <ul class="cuePanel">
+            <!-- ko foreach: SoundCues -->
+            <li class="thumbnail tile tile-medium cueTile" style="position:relative;" data-bind="style: { 'background-color': IsPlaying()===false ? '#2e8bcc' : 'black' }">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default fa fa-stop fa-2" title="Stop" data-bind="click:$data.stop"></button>
+                    <button type="button" class="btn btn-default fa fa-sort-amount-asc fa-2" title="Fade Out" data-bind="click:$data.fade"></button>
+                    <button type="button" class="btn btn-default fa fa-pencil-square-o fa-2" title="Edit" data-bind="click:function(){$parent.editCue($data);}"></button>
+                    <button type="button" class="btn btn-default fa fa-minus fa-2" title="delete" data-bind="click:function(){$parent.deleteCue($data);}"></button>
+                </div>
+                <div data-bind="click: function(){$data.play($element)}" class="playArea">
+                    <!--<div class="chart" data-bind="playbackchart:$data.progress">
+                        <span class="fa fa-3x" style="width:100%;position:relative; top:-66px;" data-bind="css:icon"></span>
+                    </div>-->
+                    <div style="display:inline-block; width:50%;height:100%;">
+                        <span class="fa fa-3x" data-bind="css:icon" style="padding:35%;"></span>
+                    </div>
+                    <div style="display:inline-block;">
+                        <div title="fade time">F:
+                            <span data-bind="text:fadeTime"></span>
+                        </div>
+                        <div title="volume">V:
+                            <span data-bind="text:volume"></span>
+                        </div>
+                    </div>
+                </div>
+                <div style=" position:absolute; bottom:15px; width:100%;">
+                    <!-- ko if: $data.files !== undefined -->
+                        <div class="fa fa-list-ul" style="display:inline-block" title="this is a playlist cue"></div>
+                    <!-- /ko -->
+                    <div style="width:82%; display:inline-block;" data-bind="text:displayName"></div>
+                    
+                </div>
+                <div class="progress" style="height:5px; width:95%; position:absolute; bottom:5px; margin-bottom:0;">
+                    <div class="progress-bar" role="progressbar" data-bind="style: {width:$data.progressNormalize() + '%'}" aria-valuemin="0"
+                        aria-valuemax="100" style="height: 5px;background:linear-gradient(to right, rgb(240, 0, 0) , rgb(255, 217, 0))}">
+                        <span class="sr-only" data-bind="text:$data.progressNormalize() + '%'">60% Complete</span>
+                    </div>
+                </div>
+            </li>
+            <!-- /ko -->
+        </ul>
+        <!--<input type="range"  min="0" max="5.0" step=".1" title="Fade Time" data-bind="value: fadeTime, valueUpdate: 'input'" readonly/>-->
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="editModal" data-bind="with:editCueVM">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" data-bind="text:displayName" style="font-weight:bold;"></h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div class="control">
+                            <label>Relative Volume:</label>
+                            <span data-bind="text:volume" style="display:inline;"></span>
+                            <input id="test" type="range" min="0" max="100.0" step=".1" title="Fade Time" data-bind="value: volume, valueUpdate: 'input'"
+                            />
+                        </div>
+                        <div class="control">
+                            <label>Fade:</label>
+                            <span data-bind="text:fadeTime" style="display:inline;"></span>
+                            <input id="test" type="range" min="0" max="20.0" step=".1" title="Fade Time" data-bind="value: fadeTime, valueUpdate: 'input'"
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label class="control checkbox">
+                            <input type="checkbox" value="true" data-bind="checked:loop" />
+                            <span class="checkbox-label"> loop</span>
+                        </label>
+                        <!-- ko if: $data.files !== undefined -->
+                        <button type="button" class="btn fa fa-random fa-3" data-bind="click:toggleShuffle,css:shuffle() === true?'btn-info':'btn-default'"
+                            title="shuffle"></button>
+                        <!-- /ko-->
+                    </div>
+                    <!-- ko if: $data.files !== undefined -->
+                    <div class="table-responsive">
+                        <table class="table" data-bind="foreach: $data.files">
+                            <tr>
+                                <td>
+                                    <span data-bind="text:$index"></span>
+                                </td>
+                                <td>
+                                    <span class="fa fa-2x" data-bind="click:function(){ $parent.playAt($index());},css: $parent.isPlaying($data)?'fa-pause':'fa-play' "></span>
+                                </td>
+                                <td data-bind="text: $parent.getDisplayString($data)"></td>
+                                <td>
+                                    <span class="fa fa-2x fa-trash" data-bind="click: function(){$parent.removeItem($index());}"></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- /ko-->
+
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <script>
+        window.$ = window.jQuery = require('jquery');
+    </script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/knockout/dist/knockout.js"></script>
+    <script src="bower_components/jquery-circle-progress/dist/circle-progress.js"></script>
+    <script src="js/AudioPlayer.js"></script>
+    <script src="js/ShowFile.js"></script>
+    <script src="js/CueViewModel.js"></script>
+    <script src="js/AppViewModel.js"></script>
+    <script src="js/playbackchart.js"></script>
+    <script>
+        ko.applyBindings(new AppViewModel());
+    </script>
+
+</body>
+
+</html>
