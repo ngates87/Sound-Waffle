@@ -10,7 +10,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>3.3</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -21,6 +21,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -36,7 +37,6 @@
     <Content Include="libs\bootstrap-slider.js" />
     <Content Include="libs\jquery.flip.js" />
     <Content Include="soundWaffle.png" />
-    <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="js\AppViewModel.ts" />
@@ -54,12 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="package.json" />
-    <None Include="web.Debug.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
-    <None Include="web.Release.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

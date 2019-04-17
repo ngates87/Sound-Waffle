@@ -4,10 +4,8 @@
   "description": "",
   "main": "main.js",
   "dependencies": {
-    "electron": "^1.7.8",
-    "gulp": "^3.9.1",
     "jquery": "^2.2.3",
-    "knockout": "^3.4.0",
+    "knockout": "^3.5.0",
     "pretty-bytes": "^2.0.1",
     "remote": "^0.2.6"
   },
@@ -21,17 +19,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "1.7.8",
-    "electron-prebuilt": "^0.37.7",
-    "gulp": "^3.9.1",
+    "electron": "^4.1.4",
+    "electron-prebuilt": "^1.4.13",
+    "gulp": "^4.0.0",
     "gulp-typescript": "^2.13.0"
-    
-  },
-  "build": {
-    "app-bundle-id": "your.id",
-    "app-category-type": "your.app.category.type",
-    "win": {
-      "iconUrl": "(windows-only) https link to icon"
-    }
   }
 }
