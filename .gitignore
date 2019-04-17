@@ -1,2 +1,6 @@
 ﻿/node_modules/**/
 /node_modules/
+/obj
+/.vs
+*.js
+/SoundCue.csproj.user
