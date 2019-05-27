@@ -3,6 +3,7 @@
   <PropertyGroup>
     <ToolsVersionPromptShown>1.8</ToolsVersionPromptShown>
     <UseIISExpress>true</UseIISExpress>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
