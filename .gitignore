@@ -1,5 +1,6 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
+﻿/node_modules/**/
+/node_modules/
+/obj
 /.vs
+*.js
+/SoundCue.csproj.user
