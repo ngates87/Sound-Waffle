@@ -4,11 +4,12 @@
   "description": "",
   "main": "main.js",
   "dependencies": {
-    "gulp": "^3.9.1",
+    "electron": "^12.0.8",
     "jquery": "^2.2.3",
-    "knockout": "^3.4.0",
+    "knockout": "^3.5.1",
     "pretty-bytes": "^2.0.1",
-    "remote": "^0.2.6"
+    "remote": "^0.2.6",
+    "typescript": "^4.2.4"
   },
   "scripts": {
     "start": "electron main.js",
@@ -20,9 +21,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^1.8.8",
     "electron-prebuilt": "^0.37.7",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-typescript": "^2.13.0"
   },
   "build": {

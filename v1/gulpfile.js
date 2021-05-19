@@ -6,18 +6,19 @@ var tsBuildOpts = {
 	//"module": "amd",
 	"target": "es5",
 	"noEmitOnError": true,
-	"removeComments":true,
+	"removeComments": true,
 };
 
-gulp.task("default",function(){
-   
-   //var srcs =["./*.ts", "./js/*.ts"];
- 
-  	gulp.src("./*.ts")
+gulp.task("default", function (cb) {
+
+	//var srcs =["./*.ts", "./js/*.ts"];
+
+	gulp.src("./*.ts")
 		.pipe(ts(tsBuildOpts))
 		.pipe(gulp.dest("./"));
-    
+
 	gulp.src("./js/*.ts")
 		.pipe(ts(tsBuildOpts))
-		.pipe(gulp.dest("./js/"));    
+		.pipe(gulp.dest("./js/"));
+	cb();
 });
