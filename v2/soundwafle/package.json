@@ -29,6 +29,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "core-js": "^2.6.12",
+    "path-browserify": "^1.0.1",
+    "require-polyfills": "^1.0.1",
     "rxjs": "^7.0.1",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
@@ -38,7 +40,7 @@
     "@angular/language-service": "^10.2.5",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "^2.0.9",
-    "@types/node": "^12.11.1",
+    "@types/node": "^15.3.0",
     "codelyzer": "^6.0.0",
     "electron": "^12.0.9",
     "jasmine-core": "~3.6.0",

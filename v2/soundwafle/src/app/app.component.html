@@ -1,8 +1,7 @@
-
 <mat-toolbar>
-  <button data-bind="click:addCue" matButton>Add Cue</button>
-  <button data-bind="click:addPlaylistCue" matButton>Add Playlist</button>
-  <button data-bind="click:save" matButton>Save</button>
-  <button data-bind="click:load" matButton>Load</button>
-  <button type="button" matButton title="Stop All" data-bind="click:stopAll"></button>
+  <button (click)='addCue' matButton>Add Cue</button>
+  <button (click)='addPlaylistCue' matButton>Add Playlist</button>
+  <button (click)="save" matButton>Save</button>
+  <button (click)="load" matButton>Load</button>
+  <button (click)="stopAll" type="button" matButton title="Stop All"></button>
 </mat-toolbar>

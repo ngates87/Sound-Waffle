@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'soundwafle';
+  title = 'sound waffle';
+
+  public addCue() { }
+
+  public addPlaylistCue() { }
+
+  public save() { }
+
+  public load() { }
+
+  public stopAll() { }
 }
