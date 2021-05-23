@@ -1,9 +1,9 @@
-var Cue = (function () {
+var Cue = /** @class */ (function () {
     function Cue() {
     }
     return Cue;
 }());
-var ShowFile = (function () {
+var ShowFile = /** @class */ (function () {
     function ShowFile() {
         this.Cues = [];
     }

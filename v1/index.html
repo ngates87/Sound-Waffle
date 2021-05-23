@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sound Waffle</title>
     <link rel="icon" type="image/png" href="soundWaffle.png">
-    <link rel="stylesheet" href="bower_components/metro-bootstrap/dist/css/metro-bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="./libs/metro-bootstrap/dist/css/metro-bootstrap.min.css" />
+    <link rel="stylesheet" href="./libs/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="./css/styles.css">
 
 </head>
@@ -20,17 +20,23 @@
                 <button data-bind="click:addPlaylistCue" class="btn btn-primary">Add Playlist</button>
                 <button data-bind="click:save" class="btn btn-primary">Save</button>
                 <button data-bind="click:load" class="btn btn-primary">Load</button>
-                <button type="button" class="btn btn-primary fa fa-stop fa-2" title="Stop All" data-bind="click:stopAll"></button>
+                <button type="button" class="btn btn-primary fa fa-stop fa-2" title="Stop All"
+                    data-bind="click:stopAll"></button>
             </div>
         </div>
         <ul class="cuePanel">
             <!-- ko foreach: SoundCues -->
-            <li class="thumbnail tile tile-medium cueTile" style="position:relative;" data-bind="style: { 'background-color': IsPlaying()===false ? '#2e8bcc' : 'black' }">
+            <li class="thumbnail tile tile-medium cueTile" style="position:relative;"
+                data-bind="style: { 'background-color': IsPlaying()===false ? '#2e8bcc' : 'black' }">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-default fa fa-stop fa-2" title="Stop" data-bind="click:$data.stop"></button>
-                    <button type="button" class="btn btn-default fa fa-sort-amount-asc fa-2" title="Fade Out" data-bind="click:$data.fade"></button>
-                    <button type="button" class="btn btn-default fa fa-pencil-square-o fa-2" title="Edit" data-bind="click:function(){$parent.editCue($data);}"></button>
-                    <button type="button" class="btn btn-default fa fa-minus fa-2" title="delete" data-bind="click:function(){$parent.deleteCue($data);}"></button>
+                    <button type="button" class="btn btn-default fa fa-stop fa-2" title="Stop"
+                        data-bind="click:$data.stop"></button>
+                    <button type="button" class="btn btn-default fa fa-sort-amount-asc fa-2" title="Fade Out"
+                        data-bind="click:$data.fade"></button>
+                    <button type="button" class="btn btn-default fa fa-pencil-square-o fa-2" title="Edit"
+                        data-bind="click:function(){$parent.editCue($data);}"></button>
+                    <button type="button" class="btn btn-default fa fa-minus fa-2" title="delete"
+                        data-bind="click:function(){$parent.deleteCue($data);}"></button>
                 </div>
                 <div data-bind="click: function(){$data.play($element)}" class="playArea">
                     <!--<div class="chart" data-bind="playbackchart:$data.progress">
@@ -50,14 +56,15 @@
                 </div>
                 <div style=" position:absolute; bottom:15px; width:100%;">
                     <!-- ko if: $data.files !== undefined -->
-                        <div class="fa fa-list-ul" style="display:inline-block" title="this is a playlist cue"></div>
+                    <div class="fa fa-list-ul" style="display:inline-block" title="this is a playlist cue"></div>
                     <!-- /ko -->
                     <div style="width:82%; display:inline-block;" data-bind="text:displayName"></div>
-                    
+
                 </div>
                 <div class="progress" style="height:5px; width:95%; position:absolute; bottom:5px; margin-bottom:0;">
-                    <div class="progress-bar" role="progressbar" data-bind="style: {width:$data.progressNormalize() + '%'}" aria-valuemin="0"
-                        aria-valuemax="100" style="height: 5px;background:linear-gradient(to right, rgb(240, 0, 0) , rgb(255, 217, 0))}">
+                    <div class="progress-bar" role="progressbar"
+                        data-bind="style: {width:$data.progressNormalize() + '%'}" aria-valuemin="0" aria-valuemax="100"
+                        style="height: 5px;background:linear-gradient(to right, rgb(240, 0, 0) , rgb(255, 217, 0))}">
                         <span class="sr-only" data-bind="text:$data.progressNormalize() + '%'">60% Complete</span>
                     </div>
                 </div>
@@ -80,14 +87,14 @@
                         <div class="control">
                             <label>Relative Volume:</label>
                             <span data-bind="text:volume" style="display:inline;"></span>
-                            <input id="test" type="range" min="0" max="100.0" step=".1" title="Fade Time" data-bind="value: volume, valueUpdate: 'input'"
-                            />
+                            <input id="test" type="range" min="0" max="100.0" step=".1" title="Fade Time"
+                                data-bind="value: volume, valueUpdate: 'input'" />
                         </div>
                         <div class="control">
                             <label>Fade:</label>
                             <span data-bind="text:fadeTime" style="display:inline;"></span>
-                            <input id="test" type="range" min="0" max="20.0" step=".1" title="Fade Time" data-bind="value: fadeTime, valueUpdate: 'input'"
-                            />
+                            <input id="test" type="range" min="0" max="20.0" step=".1" title="Fade Time"
+                                data-bind="value: fadeTime, valueUpdate: 'input'" />
                         </div>
                     </div>
                     <div>
@@ -96,7 +103,8 @@
                             <span class="checkbox-label"> loop</span>
                         </label>
                         <!-- ko if: $data.files !== undefined -->
-                        <button type="button" class="btn fa fa-random fa-3" data-bind="click:toggleShuffle,css:shuffle() === true?'btn-info':'btn-default'"
+                        <button type="button" class="btn fa fa-random fa-3"
+                            data-bind="click:toggleShuffle,css:shuffle() === true?'btn-info':'btn-default'"
                             title="shuffle"></button>
                         <!-- /ko-->
                     </div>
@@ -108,11 +116,13 @@
                                     <span data-bind="text:$index"></span>
                                 </td>
                                 <td>
-                                    <span class="fa fa-2x" data-bind="click:function(){ $parent.playAt($index());},css: $parent.isPlaying($data)?'fa-pause':'fa-play' "></span>
+                                    <span class="fa fa-2x"
+                                        data-bind="click:function(){ $parent.playAt($index());},css: $parent.isPlaying($data)?'fa-pause':'fa-play' "></span>
                                 </td>
                                 <td data-bind="text: $parent.getDisplayString($data)"></td>
                                 <td>
-                                    <span class="fa fa-2x fa-trash" data-bind="click: function(){$parent.removeItem($index());}"></span>
+                                    <span class="fa fa-2x fa-trash"
+                                        data-bind="click: function(){$parent.removeItem($index());}"></span>
                                 </td>
                             </tr>
                         </table>
@@ -126,12 +136,14 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-    <script>
+    <script data-main='main' src="./libs/requirejs/bin/r.js"></script>
+
+    <!-- <script>
         window.$ = window.jQuery = require('jquery');
     </script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/knockout/dist/knockout.js"></script>
-    <script src="bower_components/jquery-circle-progress/dist/circle-progress.js"></script>
+    <script src="libs/bootstrap/bootstrap.min.js"></script>
+    <script src="libs/knockout/build/output/knockout-latest.js"></script>
+    <script src="libs/jquery-circle-progress/dist/charset"></script>
     <script src="js/AudioPlayer.js"></script>
     <script src="js/ShowFile.js"></script>
     <script src="js/CueViewModel.js"></script>
@@ -139,7 +151,7 @@
     <script src="js/playbackchart.js"></script>
     <script>
         ko.applyBindings(new AppViewModel());
-    </script>
+    </script> -->
 
 </body>
 

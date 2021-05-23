@@ -1,24 +1,22 @@
-var gulp = require("gulp");
-var ts = require("gulp-typescript");
+const gulp = require("gulp");
+const ts = require("gulp-typescript");
+const npmDist = require('gulp-npm-dist');
 
 
-var tsBuildOpts = {
-	//"module": "amd",
-	"target": "es5",
-	"noEmitOnError": true,
-	"removeComments": true,
-};
+function copy_npm_libs() {
+	const npm_lib_execludes = [];
 
-gulp.task("default", function (cb) {
+	return gulp.src(npmDist({ copyUnminified: false }), { base: './node_modules' })
+		.pipe(gulp.dest('./libs'));
+}
 
-	//var srcs =["./*.ts", "./js/*.ts"];
+function build_ts() {
 
-	gulp.src("./*.ts")
-		.pipe(ts(tsBuildOpts))
-		.pipe(gulp.dest("./"));
+	const proj = ts.createProject("tsconfig.json");
 
-	gulp.src("./js/*.ts")
-		.pipe(ts(tsBuildOpts))
-		.pipe(gulp.dest("./js/"));
-	cb();
-});
+	return proj.src().pipe(proj()).pipe(gulp.dest("./js"));
+
+}
+
+gulp.task("default", gulp.series(build_ts, copy_npm_libs));
+

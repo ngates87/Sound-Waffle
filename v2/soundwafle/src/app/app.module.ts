@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SingleFileCueComponent } from './single-file-cue/single-file-cue.component';
 import { PlaylistCueComponent } from './playlist-cue/playlist-cue.component';
+import { NgxElectronModule } from 'ngx-electron';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { PlaylistCueComponent } from './playlist-cue/playlist-cue.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxElectronModule,
     MatButtonModule,
     MatToolbarModule
   ],

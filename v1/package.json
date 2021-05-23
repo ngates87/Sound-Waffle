@@ -2,17 +2,19 @@
   "name": "electron-app",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "launch.js",
   "dependencies": {
-    "electron": "^12.0.8",
-    "jquery": "^2.2.3",
+    "bootstrap": "^5.0.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.6.0",
+    "jquery-circle-progress": "^1.2.2",
     "knockout": "^3.5.1",
-    "pretty-bytes": "^2.0.1",
-    "remote": "^0.2.6",
-    "typescript": "^4.2.4"
+    "metro-bootstrap": "^3.2.1",
+    "metro-ui": "^3.0.15",
+    "requirejs": "^2.3.6"
   },
   "scripts": {
-    "start": "electron main.js",
+    "start": "electron js/launch.js",
     "postinstall": "install-app-deps",
     "pack": "build",
     "dist": "build",
@@ -21,9 +23,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron-prebuilt": "^0.37.7",
+    "@types/bootstrap": "^5.0.15",
+    "@types/electron": "^1.6.10",
+    "@types/jquery": "^3.5.5",
+    "@types/node": "^15.3.1",
+    "electron": "^12.0.9",
     "gulp": "^4.0.2",
-    "gulp-typescript": "^2.13.0"
+    "gulp-npm-dist": "^1.0.3",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "typescript": "^4.2.4"
   },
   "build": {
     "app-bundle-id": "your.id",

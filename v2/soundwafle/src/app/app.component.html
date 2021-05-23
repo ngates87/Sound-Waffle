@@ -1,7 +1,7 @@
 <mat-toolbar>
-  <button (click)='addCue' matButton>Add Cue</button>
-  <button (click)='addPlaylistCue' matButton>Add Playlist</button>
-  <button (click)="save" matButton>Save</button>
-  <button (click)="load" matButton>Load</button>
-  <button (click)="stopAll" type="button" matButton title="Stop All"></button>
+  <button (click)='addCue()' mat-raised-button>Add Cue</button>
+  <button (click)='addPlaylistCue()' mat-raised-button>Add Playlist</button>
+  <button (click)="save()" mat-raised-button>Save</button>
+  <button (click)="load()" mat-raised-button>Load</button>
+  <button (click)="stopAll()" type="button" mat-raised-button title="Stop All"></button>
 </mat-toolbar>
